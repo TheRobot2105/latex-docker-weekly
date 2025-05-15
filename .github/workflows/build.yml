@@ -19,7 +19,7 @@ jobs:
         with:
             user: therobot2105
             type: container
-            keep: 0
+            keep: 1
             names: |
                 texlive-small
                 texlive-full
