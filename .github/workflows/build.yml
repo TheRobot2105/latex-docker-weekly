@@ -10,7 +10,22 @@ on:
         type: boolean
         description: Whether to deploy the build images
 jobs:
+  deletion:
+    if: "!(github.event_name == 'push' && contains(github.event.head_commit.message, '[skip ci]'))"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete old Packages
+        uses: SmartsquareGmbH/delete-old-packages@v0.8.1
+        with:
+            user: therobot2105
+            type: container
+            keep: 0
+            names: |
+                texlive-small
+                texlive-full
+            dry-run: true
   build:
+    needs: deletion
     if: "!(github.event_name == 'push' && contains(github.event.head_commit.message, '[skip ci]'))"
     strategy:
       matrix:
