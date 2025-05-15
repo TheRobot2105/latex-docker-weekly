@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SCHEME: ${{ matrix.scheme }}
-      TAG: ghcr.io/xu-cheng/texlive-${{ matrix.scheme }}
+      TAG: ghcr.io/therobot2105/texlive-${{ matrix.scheme }}
     steps:
       - name: Get version
         run: |

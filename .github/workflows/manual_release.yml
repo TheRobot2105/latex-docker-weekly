@@ -14,10 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          TAG="ghcr.io/xu-cheng/texlive-${{ matrix.scheme }}"
+          TAG="ghcr.io/therobot2105/texlive-${{ matrix.scheme }}"
           VERSION="${{ github.event.inputs.version }}"
           docker pull $TAG:$VERSION
           docker tag $TAG:$VERSION $TAG:latest
           docker images $TAG
-          echo ${{ secrets.CR_PAT }} | docker login ghcr.io -u $GITHUB_ACTOR --password-stdin
+          echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u $GITHUB_ACTOR --password-stdin
           docker push $TAG:latest
