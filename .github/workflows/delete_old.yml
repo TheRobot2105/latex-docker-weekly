@@ -4,13 +4,15 @@ on:
 
 jobs:
     deletion:
-        name: Delete old Packages
-        uses: SmartsquareGmbH/delete-old-packages@v0.8.1
-        with:
-            user: therobot2105
-            type: container
-            keep: 0
-            names: |
-                texlive-small
-                texlive-full
-            dry-run: true
+      runs-on: ubuntu-latest
+      steps:
+        - name: Delete old Packages
+          uses: SmartsquareGmbH/delete-old-packages@v0.8.1
+          with:
+              user: therobot2105
+              type: container
+              keep: 0
+              names: |
+                  texlive-small
+                  texlive-full
+              dry-run: true
